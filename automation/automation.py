@@ -59,6 +59,6 @@ def validate_email():
   with open("automation/emails.txt", "w+") as email_string:
     email_string.write(email_report)
 
-# validate_email()
+validate_email()
 
   
