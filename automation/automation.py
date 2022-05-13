@@ -1,20 +1,25 @@
 import re
 
 # open potential-contacts.txt file
-# [] Find all phone numbers
-# [] store them in phone_numbers.txt
-# [] find all emails
-# [] store them in emails.text
+# [x] Find all phone numbers
+# [x] store them in phone_numbers.txt
+# [x] find all emails
+# [x] store them in emails.text
 
 def clean_numbers(number_string):
-  cleaned_number = number_string.replace('(', '')
-  cleaned_number = number_string.replace(')', "-")
-  cleaned_number = number_string.replace(".", "-")
-  
-  if len(cleaned_number) == 8:
-    cleaned_number = "206-" + cleaned_number 
+    number_string = re.sub(r"\(", '', number_string)
+    number_string = re.sub(r"\)", '-', number_string)
+    number_string = re.sub(r"\.", '-', number_string)
 
-  return cleaned_number
+    if len(number_string) == 8:
+        number_string = "206-" + number_string
+    
+    dash_num = []
+    for number in number_string:
+      formatted_num = number[:3] + '-' + number[3:6] + '-' + number[6:]
+      dash_num.append(formatted_num)
+
+    return number_string
 
 def validate_phone():
 
