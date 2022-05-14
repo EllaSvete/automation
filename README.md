@@ -1,7 +1,21 @@
 # Lab 19
 
-- Sort through the provided documents and identify the phone numbers and emails.
-- Put the numbers and emails in their own files
-- make all of the numbers have the same format
+## Overview 
+
+- Given a document potential-contacts, find and collect all email addresses and phone numbers.
+- Phone numbers may be in various formats.
+  - (xxx) yyy-zzzz, yyy-zzzz, xxx-yyy-zzzz, etc.
+  [x] phone numbers with missing area code should presume 206
+  [x] phone numbers should be stored in xxx-yyy-zzzz format.
+      - only missing dashes
+[x] Once emails and phone numbers are found they should be stored in two separate documents.
+[x] The information should be sorted in ascending order.
+[x] Duplicate entries are not allowed.
+
+## Credits
+
 - I worked on this with Katrina Hill, Michelle Salazar, and Tyler Egashira
-- For some reason my replace method isn't picking up my parenthesis as strings. Any tips?
+
+## Program
+
+- You run this program in the terminal by running python automation/automation.py  
