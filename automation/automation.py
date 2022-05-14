@@ -13,19 +13,17 @@ def clean_numbers(number_string):
 
     if len(number_string) == 8:
         number_string = "206-" + number_string
-    
-    dash_num = []
-    for number in number_string:
-      formatted_num = number[:3] + '-' + number[3:6] + '-' + number[6:]
-      dash_num.append(formatted_num)
+
+    if len(number_string) == 9:
+      number_string = number_string[:3] + '-' + number_string[3:6] + '-' + number_string[6:]
 
     return number_string
+
 
 def validate_phone():
 
   cleaned = []
   phone_pattern = re.compile(r"\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}")
-
   with open("assets/potential-contacts.txt") as numbers:
     lines = numbers.read()
   # print(lines)
@@ -39,10 +37,21 @@ def validate_phone():
   print(cleaned)
   cleaned.sort()
 
-  report = "\n".join(cleaned)
+  # dashed_list = []
+  # for x in cleaned:
+  #   final_list = x[:3] + '-' + x[3:6] + '-' + x[6:]
+  #   dashed_list.append(final_list)
+
+  without_duplicates_num = list(dict.fromkeys(cleaned))
 
   with open("automation/phone_numbers.txt", "w+") as phone_list:
-    phone_list.write(report)
+    for number in without_duplicates_num:
+      phone_list.write(number)
+      phone_list.write('\n')
+      
+
+
+  
 
 validate_phone()
 
